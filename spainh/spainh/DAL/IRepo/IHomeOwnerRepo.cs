@@ -1,7 +1,8 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using spainh.DAL.Context;
 
-namespace spainh.DAL
+namespace spainh.DAL.IRepo
 {
     public interface IHomeOwnerRepo
     {

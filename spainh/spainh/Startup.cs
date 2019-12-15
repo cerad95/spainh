@@ -1,12 +1,13 @@
-using System;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using spainh.DAL;
 using Microsoft.OpenApi.Models;
+using spainh.DAL;
+using spainh.DAL.Context;
+using spainh.DAL.IRepo;
 
 namespace spainh
 {
@@ -24,6 +25,7 @@ namespace spainh
         {
             services.AddControllers();
             services.AddScoped<IHomeOwnerRepo, HomeOwnerDal>();
+            services.AddScoped<IHolidayHomeRepo, HolidayHomeDal>();
 
             services.AddSwaggerGen(c =>
             {
@@ -54,6 +56,7 @@ namespace spainh
             {
                 app.UseDeveloperExceptionPage();
             }
+
             app.UseRouting();
             app.UseSwagger();
 
@@ -65,10 +68,7 @@ namespace spainh
                 c.RoutePrefix = string.Empty;
             });
             app.UseAuthorization();
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
+            app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
         }
     }
 }

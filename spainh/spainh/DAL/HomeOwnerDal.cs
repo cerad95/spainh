@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using spainh.DAL.Context;
+using spainh.DAL.IRepo;
 
 namespace spainh.DAL
 {
@@ -13,6 +15,7 @@ namespace spainh.DAL
         {
             db = _db;
         }
+
         public async Task<List<HomeOwner>> GetHomeOwners()
         {
             if (db == null) return null;
