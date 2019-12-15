@@ -7,7 +7,7 @@ using spainh.DAL.IRepo;
 namespace spainh.Controllers
 {
     [ApiController]
-    [Route("[action]/[controller]/")]
+    [Route("/[controller]/[action]")]
     [Produces("application/json")]
     public class HolidayHomesController : ControllerBase
     {
