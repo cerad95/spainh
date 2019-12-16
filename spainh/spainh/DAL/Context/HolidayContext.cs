@@ -28,6 +28,7 @@ namespace spainh.DAL.Context
         public string? Name { get; set; }
         public string? Location { get; set; }
         public int? Price { get; set; }
+        public HomeOwner? HomeOwner { get; set; }
         [ForeignKey("HomeOwner")] public int HomeOwnerId { get; set; }
     }
 }

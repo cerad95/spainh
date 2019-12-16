@@ -31,7 +31,7 @@ namespace spainh.DAL
             }
         }
 
-        public async Task<HolidayHome> GetHolidayHome(int? id)
+        public async Task<HolidayHome> GetHolidayHome(int id)
         {
             if (_db == null) return null;
             try
@@ -53,7 +53,7 @@ namespace spainh.DAL
             return holidayHome.Id;
         }
 
-        public async Task<int> DeleteHolidayHome(int? id)
+        public async Task<int> DeleteHolidayHome(int id)
         {
             var result = 0;
             if (_db == null) return result;
@@ -78,7 +78,7 @@ namespace spainh.DAL
             if (_db == null) return null;
             try
             {
-                return await _db.HolidayHomes.Where(x => x.HomeOwnerId.Equals(id)).Skip(5 * page).Take(5).ToListAsync();
+                return await _db.HolidayHomes.Where(x => x.HomeOwnerId.Equals(id)).Skip(5 * page).Take(5).Include(x => x.HomeOwner).ToListAsync();
             }
             catch (Exception e)
             {

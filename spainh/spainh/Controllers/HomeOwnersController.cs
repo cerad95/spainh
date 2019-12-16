@@ -63,6 +63,7 @@ namespace spainh.Controllers
             if (!ModelState.IsValid) return BadRequest();
             try
             {
+                homeOwner.Id = 0;
                 var homeownerid = await _homeOwnerRepo.AddHomeOwner(homeOwner);
                 if (homeownerid > 0)
                 {

@@ -83,6 +83,8 @@ namespace spainh.Controllers
             if (!ModelState.IsValid) return BadRequest();
             try
             {
+                holidayHome.Id = 0;
+                holidayHome.HomeOwner = null;
                 var holidayhomeid = await _holidayHomeRepo.AddHolidayHome(holidayHome);
                 if (holidayhomeid > 0)
                 {
@@ -126,6 +128,7 @@ namespace spainh.Controllers
             if (!ModelState.IsValid) return BadRequest();
             try
             {
+                holidayHome.HomeOwner = null;
                 await _holidayHomeRepo.UpdateHolidayHome(holidayHome);
                 return Ok();
             }
